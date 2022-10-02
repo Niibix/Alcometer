@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View, Button, Image, ScrollView, TextInput } from "react-native";
+import { Text, View, Button,  ScrollView, TextInput } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import Radiobutton from "./components/Radiobutton";
 import StyleSheet from "./Styles";
@@ -35,10 +35,16 @@ let hours = [
 
 
 export default function App() {
+
   const [weight, setWeight] = useState(0);
-  const calculate = () => {};
+  const [total, setTotal] = useState(0);
+  const [checked, setChecked] = useState(0);
+
 
   const [selectedItem, setSelectedItem] = useState(null);
+  const calculate = () => {};
+
+
 
   const onSelect = (item) => {
     setSelectedItem(item);
@@ -73,6 +79,7 @@ export default function App() {
         open />
 
       <Text style={StyleSheet.titles}>Gender</Text>
+      <Radiobutton checked = {checked} setChecked = {setChecked} />
 
       <Button
         style={StyleSheet.Button}

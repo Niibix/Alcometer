@@ -19,9 +19,9 @@ const Dropdownhours = ({ data = [], value = {}, onSelect = () => { } }) => {
                 <Text>{!!value ? value?.name : 'Choose an option'} </Text>
             </TouchableOpacity>
             {showOption && (<View>
-            {data.map((val, i) => {
+            {data.map((val, h) => {
                 return <TouchableOpacity 
-                key={String(i)}
+                key={String(h)}
                 onPress={()=>onSelectedItem(val)}
                 style={StyleSheet.DropdownList}
                 >

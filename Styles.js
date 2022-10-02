@@ -37,6 +37,26 @@ export default StyleSheet.create({
     paddingRight: 30,
     marginBottom: 30,
   },
+  radioButton: {
+    height: 30,
+    width: 30,
+    borderRadius: 100,
+    borderWidth: 2, 
+    borderColor: "black",
+    alignItems: "center",
+    justifyContent:"center"
+    },
+  
+    selectedButton:{
+      width: 15,
+      height: 15,
+      borderRadius: 50,
+      backgroundColor: "black",
+    },
+
+  unselectedButton: {
+    backgroundColor: "white",
+  },
   Dropdown: {
     backgroundColor: "lightgrey",
     padding: 8,
