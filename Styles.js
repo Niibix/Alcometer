@@ -79,18 +79,22 @@ export default StyleSheet.create({
   },
   Divider: {
     height: 30,
-    width:200,
-    margin:10,
+    width: 200,
+    margin: 10,
   },
-  green : {
+  total: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  green: {
     fontSize: 40,
     color: "green",
   },
-  yellow : {
+  yellow: {
     fontSize: 40,
     color: "yellow",
   },
-  red : {
+  red: {
     fontSize: 40,
     color: "red",
   }

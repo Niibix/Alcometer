@@ -16,7 +16,7 @@ const Dropdown = ({ data = [], value = {}, onSelect = () => { } }) => {
             <TouchableOpacity style={StyleSheet.Dropdown}
                 activeOpacity={0.8}
                 onPress={() => setShowOption(!showOption)}>
-                <Text>{!!value ? value?.name : 'Choose an option'} </Text>
+                <Text>{!!value ? value?.label : 'Choose an option'} </Text>
             </TouchableOpacity>
             {showOption && (<View>
                 {data.map((val, i) => {
@@ -25,7 +25,7 @@ const Dropdown = ({ data = [], value = {}, onSelect = () => { } }) => {
                         onPress={() => onSelectedItem(val)}
                         style={StyleSheet.DropdownList}
                     >
-                        <Text>{val.name}</Text>
+                        <Text>{val.label}</Text>
                     </TouchableOpacity>;
                 })}
             </View>)}

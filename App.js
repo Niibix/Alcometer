@@ -6,63 +6,83 @@ import Dropdown from "./components/Dropdown";
 import React, { useState } from "react";
 
 let bottles = [
-  { id: 1, name: "1 Bottle" },
-  { id: 2, name: "2 Bottles" },
-  { id: 3, name: "3 Bottles" },
-  { id: 4, name: "4 Bottles" },
-  { id: 5, name: "5 Bottles" },
-  { id: 6, name: "6 Bottles" },
+  { label: '1 bottle', value: 1 },
+  { label: '2 bottles', value: 2 },
+  { label: '3 bottles', value: 3 },
+  { label: '4 bottles', value: 4 },
+  { label: '5 bottles', value: 5 },
+  { label: '6 bottles', value: 6 },
+  { label: '7 bottles', value: 7 },
+  { label: '8 bottles', value: 8 },
+  { label: '9 bottles', value: 9 },
+  { label: '10 bottles', value: 10 },
+  { label: '11 bottles', value: 11 },
+  { label: '12 bottles', value: 12 },
+  { label: '13 bottles', value: 13 },
+  { label: '14 bottles', value: 14 },
+  { label: '15 bottles', value: 15 },
+  { label: '16 bottles', value: 16 },
+  { label: '17 bottles', value: 17 },
+  { label: '18 bottles', value: 18 },
+  { label: '19 bottles', value: 19 },
+  { label: '20 bottles', value: 20 }
 ];
 
 let hours = [
-  { id: 1, name: "1 hour" },
-  { id: 2, name: "2 hours" },
-  { id: 3, name: "3 hours" },
-  { id: 4, name: "4 hours" },
-  { id: 5, name: "5 hours" },
-  { id: 6, name: "6 hours" },
-  { id: 7, name: "7 hours" },
-  { id: 8, name: "8 hours" },
-  { id: 9, name: "9 hours" },
-  { id: 10, name: "10 hours" },
-  { id: 11, name: "11 hours" },
-  { id: 12, name: "12 hours" },
-  { id: 13, name: "13 hours" },
+  { label: '1 hour', value: 1 },
+  { label: '2 hours', value: 2 },
+  { label: '3 hours', value: 3 },
+  { label: '4 hours', value: 4 },
+  { label: '5 hours', value: 5 },
+  { label: '6 hours', value: 6 },
+  { label: '7 hours', value: 7 },
+  { label: '8 hours', value: 8 },
+  { label: '9 hours', value: 9 },
+  { label: '10 hours', value: 10 },
+  { label: '11 hours', value: 11 },
+  { label: '12 hours', value: 12 },
+  { label: '13 hours', value: 13 },
+  { label: '14 hours', value: 14 },
+  { label: '15 hours', value: 15 },
+  { label: '16 hours', value: 16 },
+  { label: '17 hours', value: 17 },
+  { label: '18 hours', value: 18 },
+  { label: '19 hours', value: 19 },
+  { label: '20 hours', value: 20 }
 
 ];
 
 
 export default function App() {
-  const [drink, setDrink] = useState(0);
-  const [time, setTime] = useState(0);
   const [weight, setWeight] = useState(0);
   const [total, setTotal] = useState(0);
   const [checked, setChecked] = useState(0);
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedBottles, setSelectedBottles] = useState(null);
 
-
-  const [selectedItem, setSelectedItem] = useState(null);
   const calculate = () => {
     const specialChars = /[a-zA-Z`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-    if(weight.length == 0 || specialChars.test(weight)) { 
+    if (weight.length == 0 || specialChars.test(weight)) {
       alert('Weight has not been given or it was not a number')
-    } else {   
-        let type = checked == 0 ? type = 0.7  : type = 0.6 
-          let result = ((drink*0.33)*8*4.5 - (time*(weight / 10)))/(weight*type); 
+    } else {
+      let type = checked == 0 ? type = 0.7 : type = 0.6
+      let result = ((onSelectBottles * 0.33) * 8 * 4.5 - (onSelectTime * (weight / 10))) / (weight * type);
 
-        if(result > 0) {
-          setTotal(result.toFixed(2)); 
-        } else { 
-          setTotal(0.00); 
-        }
-  }
+      if (result > 0) {
+        setTotal(result.toFixed(2));
+      } else {
+        setTotal(0.00);
+      }
+    }
   };
 
-
-
-  const onSelect = (item) => {
-    setSelectedItem(item);
+  const onSelectTime = (value) => {
+    setSelectedTime(value);
   };
 
+  const onSelectBottles = (value) => {
+    setSelectedBottles(value);
+  };
 
 
   return (
@@ -80,29 +100,29 @@ export default function App() {
         ></TextInput>
 
         <Text style={StyleSheet.titles}>Bottles</Text>
-        <Dropdown value={selectedItem}
+        <Dropdown value={selectedBottles}
           data={bottles}
-          onSelect={onSelect}
-          onChangeText={setDrink}
+          onSelect={onSelectBottles}
           open />
- 
+
         <Text style={StyleSheet.titles}>Hours</Text>
-        <Dropdown value={selectedItem}
+        <Dropdown value={selectedTime}
           data={hours}
-          onSelect={onSelect}
-          onChangeText={setTime}
+          onSelect={onSelectTime}
           open />
-   
+
         <Text style={StyleSheet.titles}>Gender</Text>
         <Radiobutton checked={checked} setChecked={setChecked} />
 
-        <Text style={StyleSheet.titles}>{total}</Text>
+        <View style={StyleSheet.total}>
+          <Text style={[total <= 0.5 ? StyleSheet.green : total >= 0.5 && total <= 1.2 ? StyleSheet.yellow : StyleSheet.red]}>{total}</Text>
+        </View>
 
         <Button
-          style={StyleSheet.Button}
           onPress={() => calculate()}
-          title="Calculate"
+          title={'Calculate'}
         ></Button>
+        <StatusBar style="auto" />
       </ScrollView>
     </View>
   );
