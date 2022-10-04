@@ -78,7 +78,7 @@ export default StyleSheet.create({
 
   },
   Divider: {
-    height: 30,
+    height: 10,
     width: 200,
     margin: 10,
   },
@@ -97,5 +97,17 @@ export default StyleSheet.create({
   red: {
     fontSize: 40,
     color: "red",
-  }
+  },
+  dropDownContainer: {
+    height: 290,
+    flexWrap: 'wrap',  
+  },
+  dropDownItems: {
+   border: 1,
+   padding: 10,
+  },
+  dropDownTitles : {
+    color: 'lightGrey',
+    fontStyle: 'italic',
+  },  
 });
